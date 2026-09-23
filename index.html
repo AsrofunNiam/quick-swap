@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Convert videos privately in your browser." />
+    <title>QuickSwap — Private Video Converter</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <a class="brand" href="/" aria-label="QuickSwap home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3m3 13H6l3 3" /></svg>
+          </span>
+          <span>QuickSwap</span>
+        </a>
+        <h1>Convert videos.<br /><span>Keep them private.</span></h1>
+        <p class="intro">Fast, secure video conversion right in your browser. No uploads. No waiting.</p>
+      </header>
+
+      <section class="converter" aria-labelledby="converter-title">
+        <h2 id="converter-title" class="sr-only">Video converter</h2>
+        <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-controls="file-input">
+          <input id="file-input" type="file" accept="video/*,.mkv,.avi,.mov,.webm,.mp4" hidden />
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 15v4h14v-4" /></svg>
+          </div>
+          <strong id="drop-title">Drop your video here</strong>
+          <span id="drop-subtitle">or click to browse your files</span>
+          <button id="browse-button" class="primary-button" type="button">Choose video</button>
+          <small>MP4, MOV, WebM, AVI, MKV · Large files may take longer</small>
+        </div>
+
+        <div id="file-card" class="file-card hidden">
+          <div class="file-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7V3Zm7 0v5h4M9.5 13l2 1.5-2 1.5v-3Z" /></svg>
+          </div>
+          <div class="file-details">
+            <strong id="file-name"></strong>
+            <span id="file-size"></span>
+          </div>
+          <button id="remove-file" class="icon-button" type="button" aria-label="Remove selected file">×</button>
+        </div>
+
+        <div class="controls">
+          <label for="format-select">Convert to</label>
+          <div class="select-wrap">
+            <select id="format-select">
+              <option value="mp4">MP4</option>
+              <option value="mov">MOV</option>
+              <option value="webm">WebM</option>
+              <option value="avi">AVI</option>
+              <option value="gif">GIF</option>
+              <option value="mkv">MKV</option>
+            </select>
+          </div>
+          <button id="convert-button" class="convert-button" type="button" disabled>
+            <span>Convert video</span><span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div id="status-panel" class="status-panel hidden" aria-live="polite">
+          <div class="status-heading"><strong id="status-text">Preparing converter…</strong><span id="progress-value">0%</span></div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <div id="message" class="message hidden" role="alert"></div>
+        <a id="download-button" class="download-button hidden" download>Download converted video</a>
+
+        <div class="privacy-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.9 8.2 7 10 4.1-1.8 7-5.4 7-10V6l-7-3Zm-3 9 2 2 4-5" /></svg>
+          <p><strong>Your files never leave your device</strong><span>Everything is processed locally in your browser.</span></p>
+        </div>
+      </section>
+    </main>
+    <footer>Private by design <span>•</span> Powered by WebAssembly</footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
